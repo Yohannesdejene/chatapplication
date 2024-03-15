@@ -1,0 +1,9 @@
+backend/node_modules
+frontend/node_modules
+node_modules/
+
+# Ignore backend build directory
+backend/build/
+
+# Ignore frontend build directory
+frontend/build/
