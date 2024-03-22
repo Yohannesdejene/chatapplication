@@ -23,11 +23,37 @@ function App() {
     <ThemeProvider theme={Theme}>
       <CssBaseline />
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
 
         <Routes>
-          <Route index path="/" element={<Contacts />} />
-          <Route path="/chat/:chatUserId" element={<ChatPanel />} />
+          <Route
+            index
+            path="/"
+            element={
+              <div>
+                <NavBar />
+                <Contacts />
+              </div>
+            }
+          />
+          <Route
+            path="/chat/:chatUserId"
+            element={
+              <div>
+                <Box
+                  sx={{
+                    display: {
+                      xs: "none",
+                      sm: "block",
+                    },
+                  }}
+                >
+                  <NavBar />
+                </Box>
+                <ChatPanel />
+              </div>
+            }
+          />
 
           <Route path="/signup" element={<ChatPanel />} />
           <Route path="/contact" element={<Test />} />
