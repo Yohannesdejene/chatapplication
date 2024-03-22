@@ -1,18 +1,17 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Grid } from "@mui/material";
-
+import { Grid, MenuItem, Menu, Drawer, Box, Typography } from "@mui/material";
+import LeftLayout from "../component/layouts/leftLayout";
+import HorizontalTabs from "../component/layouts/horizontalTabs";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: "10px",
+  borderRadius: "40px",
   border: "1px solid black",
   borderColor: "black",
   backgroundColor: alpha(theme.palette.common.white, 0.9),
@@ -57,19 +56,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+  const [left, setLeft] = React.useState(false);
+
+  const toggleDrawer = () => {
+    setLeft(!left);
+  };
   return (
     <Box
       sx={{
         flexGrow: 1,
-        backgroundColor: "white",
+        // backgroundColor: "white",
+        // borderRight: "1px solid black",
       }}
     >
       <AppBar
         // position="absolute"
-        elevation={0}
+        elevation={0} // Remove elevation and shadow
         sx={{
           backgroundColor: "#ffffff",
-          // border: "1px solid black",
+          // borderRight: "1px solid black",
+
           left: "0px",
           // alignItems: "flex-start",
           width: {
@@ -79,27 +85,43 @@ export default function NavBar() {
         }}
       >
         <Toolbar>
+          <Drawer
+            anchor="left"
+            open={left}
+            onClose={toggleDrawer}
+            sx={{
+              // width: {
+              //   xs: "70%",
+              //   sm: "50%",
+              // },
+              border: "none",
+              flexShrink: 0,
+              "& .MuiDrawer-paper": {
+                width: {
+                  xs: "70%",
+                  sm: "20%",
+                },
+              },
+            }}
+          >
+            <LeftLayout />
+          </Drawer>
+
           <IconButton
             size="large"
             edge="start"
             // color="black"
-omClick={}
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="div"
+            onClick={toggleDrawer}
             sx={{
-              flexGrow: 1,
-              color: "black",
-              display: { xs: "none", sm: "block" },
+              mr: 2,
+              border: "none",
+              "&:focus": {
+                outline: "none", // Remove outline on focus
+              },
             }}
           >
-            Telegram clone
-          </Typography> */}
+            <MenuIcon sx={{ border: "none" }} />
+          </IconButton>
           <Search>
             <SearchIconWrapper>
               <SearchIcon sx={{ color: "black" }} />
@@ -110,6 +132,7 @@ omClick={}
             />
           </Search>
         </Toolbar>
+        {/* <HorizontalTabs /> */}
       </AppBar>
     </Box>
   );
