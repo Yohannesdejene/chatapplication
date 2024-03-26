@@ -39,7 +39,7 @@ const ChatLink = () => {
         >
           <Typography
             sx={{
-              fontSize: "18px",
+              fontSize: "15px",
               fontFamily: "roboto",
               fontWeight: "bold",
             }}
@@ -48,7 +48,7 @@ const ChatLink = () => {
           </Typography>
           <Typography
             sx={{
-              fontSize: "14px",
+              fontSize: "13px",
               fontFamily: "roboto",
               mr: "10px",
             }}
@@ -61,7 +61,7 @@ const ChatLink = () => {
           sx={{
             display: "flex",
             flexWrap: "none",
-            fontSize: "16px",
+            fontSize: "13px",
             fontFamily: "roboto",
             textAlign: "justify",
             overflow: "hidden",

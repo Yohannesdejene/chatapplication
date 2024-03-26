@@ -17,11 +17,10 @@ const Profile = () => {
         backgroundColor: "white",
         display: "flex",
         gap: "10px",
-
         p: "5px",
         pl: { xs: "1px", sm: "20px" },
-
         borderLeft: "1px solid #F4F4F4",
+        zIndex: "999",
       }}
     >
       <IconButton
@@ -96,12 +95,24 @@ const Profile = () => {
             },
           }}
         >
-          <IconButton>
+          <IconButton
+            sx={{
+              "&:focus": {
+                outline: "none", // Remove outline on focus
+              },
+            }}
+          >
             <CallIcon />
           </IconButton>
         </Grid>
         <Grid item xs={1}>
-          <IconButton>
+          <IconButton
+            sx={{
+              "&:focus": {
+                outline: "none", // Remove outline on focus
+              },
+            }}
+          >
             <MoreVertIcon />
           </IconButton>
         </Grid>
