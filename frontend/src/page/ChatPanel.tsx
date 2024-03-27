@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Typography,
@@ -87,6 +87,9 @@ const ChatPanel = () => {
   const [chatUserId, setChatUserId] = useState(
     param?.chatUserId ? param.chatUserId : null
   );
+
+  const chatEndRef = useRef(null);
+
   const [chatData, setChatData] = useState([]);
 
   useEffect(() => {
@@ -97,7 +100,10 @@ const ChatPanel = () => {
   useEffect(() => {
     setChatData(dete);
   }, []);
-  console.log("chatData", chatData);
+
+  useEffect(() => {
+    chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [chatData]);
   return (
     <Grid
       container
@@ -166,6 +172,7 @@ const ChatPanel = () => {
         >
           {chatData.length > 0 &&
             chatData?.map((value, index) => <Chat data={value} />)}
+          <div ref={chatEndRef} />
         </Box>
         <ChatField />
       </Grid>

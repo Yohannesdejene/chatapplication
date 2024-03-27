@@ -31,6 +31,8 @@ const Chat = ({ data }) => {
           display: "flex",
           flexDirection: "column",
           mb: "6px",
+          ml: "10px",
+          mr: "10px",
         }}
       >
         {data?.userOne == 1233 ? (
@@ -40,13 +42,14 @@ const Chat = ({ data }) => {
               container
               sx={{
                 // minHeight: "auto",
-                paddingLeft: "5px",
+                paddingLeft: "10px",
                 paddingTop: "5px",
                 paddingBottom: "10px",
                 paddingRight: "10px",
                 backgroundColor: "#ffffff",
                 // marginRight: "auto", // Align to the right by setting margin-left to auto
                 borderRadius: "20px",
+                textAlign: "left",
               }}
             >
               <Grid item xs={9} sx={{ mt: "0px" }}>
@@ -76,7 +79,7 @@ const Chat = ({ data }) => {
             </Grid>
           </Box>
         ) : (
-          <Box sx={{ minWidth: "40%", maxWidth: "85%", marginLeft: "auto" }}>
+          <Box sx={{ minWidth: "50%", maxWidth: "85%", marginLeft: "auto" }}>
             <Grid
               spacing={1}
               sx={{
